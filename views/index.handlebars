@@ -1,0 +1,39 @@
+<h1>Eat Da Burger</h1>
+
+<p>Create and eat burgers in this APP</p>
+<!-- this is index.handlebars -->
+<ul>
+  {{#each burger}}
+  	<li>
+  		<p><span class="label">ID:</span> {{this.id}}</p>
+      <p><span class="label">Burger:</span> {{this.burger}}</p>
+      <p><span class="label">Author:</span> {{this.author}}</p>
+
+      {{!-- Form should send a delete command to the server --}}
+      <form>
+        <input type="hidden" name="id" value="{{this.id}}">
+        <button type="submit">Delete</button>
+      </form>
+
+      <a href="/burger/{{this.id}}">Devour It!</a>
+  	</li>
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+
+{{!-- Form should send a post command to the server --}}
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="auth">Burger Flipper:</label>
+    <input type="text" id="auth" name="author">
+  </div>
+
+  <div class="form-group">
+    <label for="quo">Burger:</label>
+    <textarea id="quo" name="quote" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
